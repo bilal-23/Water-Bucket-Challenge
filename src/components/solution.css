@@ -44,14 +44,14 @@
   background-color: #e11d48;
 }
 @media screen and (max-width: 1024px) {
-  .solution {
+  .tanks-container {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
   }
 }
 @media screen and (max-width: 600px) {
-  .solution {
+  .tanks-container {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
