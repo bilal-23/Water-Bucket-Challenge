@@ -1,11 +1,17 @@
 .solution {
   flex: 3;
-  /* background-color: rgb(16, 54, 69); */
   background-color: var(--slate-800);
-  /* background-color: var(--slate-800); */
   border-radius: 24px;
   padding: 2rem;
   color: var(--slate-100);
+}
+.total {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: -0.1em;
+  margin-bottom: 2rem;
+}
+.tanks-container {
   display: flex;
   justify-content: space-between;
   align-items: end;

@@ -1,3 +1,5 @@
+import { useRef } from "react"
+
 import "./tank.css"
 
 interface Props {
@@ -5,24 +7,51 @@ interface Props {
   index: number
   handleAddWater: (index: number) => void
   handleEmptyTank: (index: number) => void
+  equilibrate: () => void
 }
-export const Tank = ({ filledWater, index, handleEmptyTank, handleAddWater }: Props) => {
+export const Tank = ({
+  filledWater,
+  index,
+  handleEmptyTank,
+  handleAddWater,
+  equilibrate,
+}: Props) => {
+  const interval = useRef<number | undefined>()
+
   const handleAdd = () => {
-    handleAddWater(index)
+    if (filledWater === 0) {
+      handleAddWater(index)
+    }
+    if (filledWater < 1000) {
+      interval.current = setInterval(() => {
+        handleAddWater(index)
+      }, 1000)
+    }
   }
 
   const handleEmpty = () => {
-    handleEmptyTank(0)
+    handleEmptyTank(index)
   }
-
   return (
     <div className='tank-container'>
-      <p>{filledWater} Litres</p>
+      <p>{filledWater} L</p>
       <div className='tank'>
-        <div className='filled-water' style={{ height: `${filledWater}%` }} />
+        <div
+          className='filled-water'
+          style={{
+            height: `${Math.floor(filledWater / 10)}%`,
+          }}
+        />
       </div>
       <div className='button-container'>
-        <button className='add' onClick={handleAdd}>
+        <button
+          className='add'
+          onMouseDown={handleAdd}
+          onMouseUp={() => {
+            clearInterval(interval.current)
+            equilibrate()
+          }}
+        >
           Add
         </button>
         <button className='empty' onClick={handleEmpty}>
