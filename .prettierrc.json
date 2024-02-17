@@ -7,6 +7,15 @@
   "printWidth": 100,
   "jsxSingleQuote": true,
   "bracketSpacing": true,
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "singleQuote": false,
+        "semi": true
+      }
+    }
+  ],
   "importOrder": [
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
