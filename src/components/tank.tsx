@@ -19,9 +19,6 @@ export const Tank = ({
   const interval = useRef<number | undefined>()
 
   const handleAdd = () => {
-    if (filledWater === 0) {
-      handleAddWater(index)
-    }
     if (filledWater < 1000) {
       interval.current = setInterval(() => {
         handleAddWater(index)
